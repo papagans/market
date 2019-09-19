@@ -40,4 +40,25 @@ def product_delete(request, pk):
     elif request.method == 'POST':
         product.delete()
         return redirect('index')
+
+
+def product_update(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    if request.method == 'GET':
+        form = ProductForm(data={'name': product.name, 'description': product.description, 'category': product.category,
+                                 'count': product.count, 'price': product.price})
+        return render(request, 'update.html', context={'form': form, 'product': product})
+    elif request.method == 'POST':
+        form = ProductForm(data=request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            product.name = data['name']
+            product.description = data['description']
+            product.category = data['category']
+            product.count = data['count']
+            product.price = data['price']
+            product.save()
+            return redirect('product_view', pk=product.pk)
+        else:
+            return render(request, 'update.html', context={'form': form, 'product': product})
 # Create your views here.
