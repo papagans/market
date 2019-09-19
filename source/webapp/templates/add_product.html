@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Add Product{% endblock %}
+{% block content %}
+   <h1>Add Product</h1>
+   <form method="POST" action="{% url "add_product" %}">
+       {% csrf_token %}
+       {% include 'partial/product_form.html' with button_text='Add+' %}
+   </form>
+{% endblock %}
