@@ -10,7 +10,7 @@ category = (
 
 class Product(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name='Наименование товара')
-    description = models.TextField(max_length=2000, null=False, blank=False, verbose_name='Описание товара')
+    description = models.TextField(max_length=2000, null=True, blank=True, verbose_name='Описание товара')
     category = models.CharField(max_length=20, default=category[0][0], verbose_name='Status', choices=category)
     count = models.IntegerField(verbose_name='Остаток')
     price = models.DecimalField(max_digits=7, decimal_places=2, verbose_name='Цена')
