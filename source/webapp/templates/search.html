@@ -7,7 +7,7 @@
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Category</a>
     <div class="dropdown-menu">
         {% for cat in category %}
-      <a class="dropdown-item" href="product/{{ cat.0 }}">{{ cat.1 }}</a>
+      <a class="dropdown-item" href="{{ cat.0 }}">{{ cat.1 }}</a>
 {% endfor %}
     </div>
   </li>
@@ -15,14 +15,14 @@
 {% block content %}
     <div class="container">
     <div class="row">
-{% for product in products %}
+{% for list in lists %}
     <div class="col-sm-3">
     <div class="card border-primary mb-3" style="max-width: 14rem; text-align: center">
-  <div class="card-header"><h3>{{ product.name }}</h3>
-    {{ product.price }}<br/>Category: {{ product.get_category_display }}
-       <p><a href="{% url 'product_view' product.pk %}">Details...</a></p>
-       <p><a href="{% url 'product_update' product.pk %}">Edit</a></p>
-       <p><a href="{% url 'product_delete' product.pk %}">Delete</a></p>
+  <div class="card-header"><h3>{{ list.name }}</h3>
+    {{ list.price }}<br/>Category: {{ list.get_category_display }}
+       <p><a href="{% url 'product_view' list.pk %}">Details...</a></p>
+       <p><a href="{% url 'product_update' list.pk %}">Edit</a></p>
+       <p><a href="{% url 'product_delete' list.pk %}">Delete</a></p>
   </div>
   </div>
 </div>

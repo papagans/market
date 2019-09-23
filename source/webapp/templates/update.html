@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 {% block title %}Update Product{% endblock %}
 {%  block menu %}
-<li><a href="{% url 'product_view' product.pk %}">View</a></li>
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'product_view' product.pk %}">View <span class="sr-only">(current)</span></a>
+      </li>
+{#<li><a href="{% url 'product_view' product.pk %}">View</a></li>#}
 {% endblock %}
 {% block content %}
     <h1>Edit product</h1>
