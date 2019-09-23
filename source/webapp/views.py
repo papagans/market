@@ -83,10 +83,7 @@ def product_search(request):
 
 def product_category(request, cat):
     products = get_object_or_404(Product, category=cat)
-    print(cat)
-    print(product.category)
     product = Product.objects.filter(category__contains=category)
-    print(product.category)
     return render(request, 'category.html', context={
         'category': category,
         'products': products,
